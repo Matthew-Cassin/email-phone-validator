@@ -5,7 +5,6 @@ setup(
     version="0.1.0",
     description="A Python library for validating and normalizing email addresses and phone numbers.",
     author="Matt",
-    author_email="m.cassin93@hotmail.com",
     license="MIT",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
