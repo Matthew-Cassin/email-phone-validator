@@ -19,12 +19,12 @@ from .email_validator import EmailValidator
 from .models import ValidationError, ValidationResult
 from .phone_validator import PhoneValidator
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 
 __all__ = [
     "EmailValidator",
     "PhoneValidator",
-    "ValidationResult",
     "ValidationError",
+    "ValidationResult",
     "__version__",
 ]

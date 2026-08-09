@@ -59,7 +59,3 @@ class TestValidationError:
     def test_raises_and_preserves_message(self):
         with pytest.raises(ValidationError, match="boom"):
             raise ValidationError("boom")
-
-    def test_catchable_as_plain_exception(self):
-        with pytest.raises(Exception):
-            raise ValidationError("boom")

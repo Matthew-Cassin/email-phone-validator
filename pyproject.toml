@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "email-phone-validator"
+version = "1.0.0"
+description = "Production-grade email and phone number validation: MX-checked email validation and E.164 international phone formatting, returning structured, inspectable results."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Matt" }]
+requires-python = ">=3.10"
+dependencies = [
+    "email-validator>=2.3.0,<3.0.0",
+    "phonenumbers>=9.0.36,<10.0.0",
+    "dnspython>=2.8.0,<3.0.0",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Communications :: Email",
+    "Typing :: Typed",
+]
+keywords = ["email", "validation", "phone", "e164", "mx-record", "international"]
+
+[project.urls]
+Homepage = "https://github.com/Matthew-Cassin/email-phone-validator"
+Repository = "https://github.com/Matthew-Cassin/email-phone-validator"
+Issues = "https://github.com/Matthew-Cassin/email-phone-validator/issues"
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.16",
+    "mypy>=1.13",
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+email_phone_validator = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"
+
+[tool.coverage.run]
+source = ["email_phone_validator"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true

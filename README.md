@@ -1,8 +1,9 @@
 # Email & Phone Validator
 
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+[![CI](https://github.com/Matthew-Cassin/email-phone-validator/actions/workflows/ci.yml/badge.svg)](https://github.com/Matthew-Cassin/email-phone-validator/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![Types](https://img.shields.io/badge/types-mypy%20strict-brightgreen)
 
 A Python library for validating and normalizing email addresses (with MX record checks) and international phone numbers (with E.164 formatting), returning structured, inspectable results instead of raw booleans.
 
