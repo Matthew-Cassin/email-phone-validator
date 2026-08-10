@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import phonenumbers
 from phonenumbers import NumberParseException, PhoneNumberFormat, PhoneNumberType
@@ -17,7 +17,7 @@ __all__ = ["PhoneValidator"]
 # phonenumbers.PhoneNumberType values are plain integer constants, not a
 # real enum, so there's no built-in `.name` to log or report -- this maps
 # them to readable strings for ValidationResult.details["carrier_type"].
-_NUMBER_TYPE_NAMES: Dict[int, str] = {
+_NUMBER_TYPE_NAMES: dict[int, str] = {
     PhoneNumberType.FIXED_LINE: "FIXED_LINE",
     PhoneNumberType.MOBILE: "MOBILE",
     PhoneNumberType.FIXED_LINE_OR_MOBILE: "FIXED_LINE_OR_MOBILE",
@@ -38,7 +38,7 @@ _NUMBER_TYPE_NAMES: Dict[int, str] = {
 # requiring an exact MOBILE match.
 _MOBILE_TYPES = (PhoneNumberType.MOBILE, PhoneNumberType.FIXED_LINE_OR_MOBILE)
 
-_PARSE_ERROR_MESSAGES: Dict[int, str] = {
+_PARSE_ERROR_MESSAGES: dict[int, str] = {
     NumberParseException.INVALID_COUNTRY_CODE: "Invalid country",
     NumberParseException.NOT_A_NUMBER: "Invalid format",
     NumberParseException.TOO_SHORT_AFTER_IDD: "Wrong length",
@@ -80,7 +80,7 @@ class PhoneValidator:
             )
         self.default_country = region
 
-    def validate(self, phone: str, country: Optional[str] = None) -> ValidationResult:
+    def validate(self, phone: str, country: str | None = None) -> ValidationResult:
         """Validate and format a phone number.
 
         Args:
@@ -129,8 +129,8 @@ class PhoneValidator:
 
         logger.info("Validating phone number against region hint %s", region_hint)
 
-        errors: List[str] = []
-        details: Dict[str, Any] = {
+        errors: list[str] = []
+        details: dict[str, Any] = {
             "country_code": None,
             "national_number": None,
             "country": None,

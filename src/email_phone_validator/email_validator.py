@@ -9,7 +9,7 @@ each be reported with a specific, actionable message.
 from __future__ import annotations
 
 import difflib
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 import dns.exception
 import dns.resolver
@@ -33,7 +33,7 @@ __all__ = ["EmailValidator"]
 # "gmial.com"). Deliberately small and well-known rather than
 # exhaustive -- the goal is a cheap, offline "did you mean?" hint, not a
 # full-fledged authority on every real domain.
-_COMMON_EMAIL_DOMAINS: Tuple[str, ...] = (
+_COMMON_EMAIL_DOMAINS: tuple[str, ...] = (
     "gmail.com",
     "yahoo.com",
     "hotmail.com",
@@ -47,7 +47,7 @@ _COMMON_EMAIL_DOMAINS: Tuple[str, ...] = (
 )
 
 
-def _suggest_domains(domain: Optional[str]) -> Optional[List[str]]:
+def _suggest_domains(domain: str | None) -> list[str] | None:
     """Suggest likely-intended domains for a possibly mistyped one.
 
     Args:
@@ -130,8 +130,8 @@ class EmailValidator:
 
         logger.info("Validating email address")
 
-        errors: List[str] = []
-        details: Dict[str, Any] = {
+        errors: list[str] = []
+        details: dict[str, Any] = {
             "format_valid": False,
             "mx_valid": None,
             "domain": None,
@@ -182,7 +182,7 @@ class EmailValidator:
             details=details,
         )
 
-    def _check_mx(self, domain: str) -> Tuple[bool, Optional[str]]:
+    def _check_mx(self, domain: str) -> tuple[bool, str | None]:
         """Look up MX records for ``domain``, failing gracefully.
 
         Args:

@@ -10,9 +10,9 @@ exception type the package raises.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any
 
-__all__ = ["ValidationResult", "ValidationError"]
+__all__ = ["ValidationError", "ValidationResult"]
 
 
 @dataclass
@@ -52,9 +52,9 @@ class ValidationResult:
     """
 
     is_valid: bool
-    formatted: Optional[str] = None
-    errors: List[str] = field(default_factory=list)
-    details: Dict[str, Any] = field(default_factory=dict)
+    formatted: str | None = None
+    errors: list[str] = field(default_factory=list)
+    details: dict[str, Any] = field(default_factory=dict)
 
 
 class ValidationError(Exception):
